@@ -1,0 +1,43 @@
+---
+- hosts: antlet71
+  tasks:
+    - name: Install Apache
+      yum: name=httpd state=latest
+    - name: Install Samba
+      yum:
+        name: samba
+        state: latest
+
+    - name: Start Services
+      service:
+        name: "{{ item }}"
+        enabled: true
+        state: started
+      with_items:
+        - httpd
+        - smb
+
+    - name: Open Firewall
+      firewalld:
+        service: http
+        permanent: true
+
+    - name: Copiando Contenido
+      copy:
+        content: "Welcome to my Web Page"
+        dest: /var/www/html/index.html
+        mode: 0644 #cambia los permisos del archivo
+
+    - name: Modifica Index
+      lineinfile:
+        path: /var/www/html/index.html
+        regexp: "ˆBienvendio"
+        line: 'Hola' #busca la slineas con Bienvenido y las reemplaza con hola (toda la linea)
+
+    - name: Inserte
+      lineinfile:
+        path: /var/www/html/index.html
+        insertbefore: "ˆHola"
+        line: 'hey' #busca hola e inserta antes de hola la plabra hey
+
+...
