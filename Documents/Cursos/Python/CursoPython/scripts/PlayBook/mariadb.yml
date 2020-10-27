@@ -3,7 +3,7 @@
   var_files:
     - vars1.yml
   tasks:
-    - name: install pkg + run packes + intial
+    - name: install pkg + run packes + intial +1 
       yum:
         name: "{{ db_pkg }}"
         state: latest
