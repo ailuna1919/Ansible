@@ -1,0 +1,15 @@
+---
+- hosts: all
+  var_files:
+    - vars1.yml
+  tasks:
+    - name: install pkg + run packes + intial
+      yum:
+        name: "{{ db_pkg }}"
+        state: latest
+    - name: start {{ db_srv }}
+      service:
+        name: "{{ db_srv }}"
+        state: started
+        enabled: true
+...
