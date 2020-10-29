@@ -1,0 +1,13 @@
+[all]
+host1
+host2
+
+[group1]
+host1
+
+[group2]
+host2
+
+[all:vars]
+ansible_ssh_pass=passuseransible
+ansible_become_pass=passroot
