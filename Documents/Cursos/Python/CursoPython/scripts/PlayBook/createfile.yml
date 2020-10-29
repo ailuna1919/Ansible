@@ -27,4 +27,9 @@
         owner: ipbackup
         group: root
         mode: '0770'
+
+    - name: Creates directory /routing
+        file:
+          path: /routing
+          state: directory
 ...
