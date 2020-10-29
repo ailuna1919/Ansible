@@ -1,0 +1,30 @@
+---
+- hosts: group5
+  become: yes
+  become_method: su
+  become_user: root
+  gather_facts: no
+
+  tasks:
+    - name: Creates directory /ipbackup
+      file:
+        path: /ipbackup
+        state: directory
+
+    - name: Creates directory  /ipbackup/actually
+      file:
+        path:  /ipbackup/actually
+        state: directory
+
+    - name: Creates directory /ipbackup/history
+      file:
+        path: /ipbackup/history
+        state: directory
+
+    - name: Change file ownership, group and permissions
+      file:
+        path: /ipbackup
+        owner: ipbackup
+        group: root
+        mode: '0770'
+...
