@@ -6,30 +6,15 @@
   gather_facts: no
 
   tasks:
-    - name: Creates directory /ipbackup
-      file:
-        path: /ipbackup
-        state: directory
+    - name: Creates directory /raiz
+        file:
+          path: /raiz
+          state: directory
 
-    - name: Creates directory  /ipbackup/actually
+    - name: Change file ownership, group and permissions /raiz
       file:
-        path:  /ipbackup/actually
-        state: directory
-
-    - name: Creates directory /ipbackup/history
-      file:
-        path: /ipbackup/history
-        state: directory
-
-    - name: Change file ownership, group and permissions
-      file:
-        path: /ipbackup
-        owner: ipbackup
+        path: /raiz
+        owner: root
         group: root
         mode: '0770'
-
-    - name: Creates directory /routing
-        file:
-          path: /routing
-          state: directory
 ...
