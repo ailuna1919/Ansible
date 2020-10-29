@@ -6,9 +6,9 @@
   gather_facts: no
 
   tasks:
-    - name: Creates directory /raiz
+    - name: Creates directory /raizdos
         file:
-          path: /raiz
+          path: /raizdos
           state: directory
 
     - name: Change file ownership, group and permissions /raiz
